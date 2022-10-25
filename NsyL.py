@@ -16,7 +16,7 @@ pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
 
-URL_HOST = "http://185.162.146.216:5000" # API server
+URL_HOST = "http://188.132.202.30:5000" # API server
 URL_REQUEST_TIMEOUT = 15 # sec
 DISCORD_FETCH_DELAY = 5000 # ms
 
