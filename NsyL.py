@@ -53,8 +53,8 @@ QtBind.createLineEdit(gui,"",169,10,1,262)
 
 # Triggers
 QtBind.createLabel(gui,"Select the Discord channel to send the notification ( Filters are using regex! )",175,10)
-QtBind.createLabel(gui,"Edited by ' Xenopbia#6095 ' and ' NsyL#1634 '. ",460,282)
-QtBind.createLabel(gui,"' Xenopbia#6095 ' ve ' NsyL#1634 ' Tarafından düzenlenmiştir . ",415,297)
+QtBind.createLabel(gui,"Edited by ' NsyL#1634 ' and ' Xenopbia  '. ",460,282)
+QtBind.createLabel(gui,"' NsyL#1634 ' ve ' Xenopbia ' Tarafından düzenlenmiştir . ",415,297)
 btnSaveConfig = QtBind.createButton(gui,'saveConfigs',"     Save Changes     ",615,4)
 
 # Creating margins to locate all quickly
