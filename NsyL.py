@@ -12,7 +12,7 @@ import re
 
 pName = 'NsyL'
 pVersion = '1.1.2'
-pUrl = ''
+pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
 
