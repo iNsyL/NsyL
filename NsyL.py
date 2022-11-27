@@ -11,7 +11,7 @@ import os
 import re
 
 pName = 'NsyL'
-pVersion = '1.1.3x'
+pVersion = '1.0.2'
 pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
