@@ -1,4 +1,4 @@
-﻿from phBot import *
+from phBot import *
 import QtBind
 from datetime import datetime
 from threading import Timer
