@@ -1,4 +1,4 @@
-﻿from phBot import *
+from phBot import *
 import QtBind
 from datetime import datetime
 from threading import Timer
@@ -11,7 +11,7 @@ import os
 import re
 
 pName = 'NsyL'
-pVersion = '1.1.2'
+pVersion = '1.1.3'
 pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
@@ -1328,6 +1328,3 @@ if not os.path.exists(getPath()):
 	log('Plugin: '+pName+' folder has been created')
 # Adding RELOAD plugin support
 loadConfigs()
-
-# Load discord handlers
-discord_chat_handlers = GetChatHandlers()
