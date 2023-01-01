@@ -11,12 +11,12 @@ import os
 import re
 
 pName = 'NsyL'
-pVersion = '1.1.2'
+pVersion = '1.0.2'
 pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
 
-URL_HOST = "http://188.132.202.30:5000" # API server
+URL_HOST = "http://nsyl.projecthax.com" # API server
 URL_REQUEST_TIMEOUT = 15 # sec
 DISCORD_FETCH_DELAY = 5000 # ms
 
