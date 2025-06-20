@@ -16,7 +16,7 @@ pUrl = 'https://raw.githubusercontent.com/iNsyL/NsyL/main/NsyL.py'
 
 # ______________________________ Initializing ______________________________ #
 
-URL_HOST = "http://nsyl.projecthax.com" # API server
+URL_HOST = "https://discord-production-2346.up.railway.app"	# API server
 URL_REQUEST_TIMEOUT = 15 # sec
 DISCORD_FETCH_DELAY = 5000 # ms
 
@@ -53,8 +53,8 @@ QtBind.createLineEdit(gui,"",169,10,1,262)
 
 # Triggers
 QtBind.createLabel(gui,"Select the Discord channel to send the notification ( Filters are using regex! )",175,10)
-QtBind.createLabel(gui,"Edited by ' NsyL#1634 ' and ' Xenopbia  '. ",460,282)
-QtBind.createLabel(gui,"' NsyL#1634 ' ve ' Xenopbia ' Tarafından düzenlenmiştir . ",415,297)
+QtBind.createLabel(gui,"Edited by ' NsyL ' ",590,282)
+QtBind.createLabel(gui,"' NsyL' Tarafından düzenlenmiştir . ",550,297)
 btnSaveConfig = QtBind.createButton(gui,'saveConfigs',"     Save Changes     ",615,4)
 
 # Creating margins to locate all quickly
@@ -238,10 +238,14 @@ cmbxEvtPick_rare = QtBind.createCombobox(gui_,_x,_y,_cmbxWidth,_Height)
 _y+=20
 QtBind.createLabel(gui_,'Item (Equipable) picked up',_x+_cmbxWidth+4,_y+3)
 cmbxEvtPick_equip = QtBind.createCombobox(gui_,_x,_y,_cmbxWidth,_Height)
+
+# Simple one-line logo in gui_
+QtBind.createLabel(gui_, "N s y L", 600, 280)	
 _y+=20
 
 # wrap to iterate
 cmbxTriggers_={'cmbxEvtMessage_all':cmbxEvtMessage_all,'cmbxEvtMessage_private':cmbxEvtMessage_private,'cmbxEvtMessage_stall':cmbxEvtMessage_stall,'cmbxEvtMessage_party':cmbxEvtMessage_party,'cmbxEvtMessage_academy':cmbxEvtMessage_academy,'cmbxEvtMessage_guild':cmbxEvtMessage_guild,'cmbxEvtMessage_union':cmbxEvtMessage_union,'cmbxEvtMessage_global':cmbxEvtMessage_global,'cmbxEvtMessage_notice':cmbxEvtMessage_notice,'cmbxEvtMessage_gm':cmbxEvtMessage_gm,'cmbxEvtParty_joined':cmbxEvtParty_joined,'cmbxEvtParty_left':cmbxEvtParty_left,'cmbxEvtParty_memberJoin':cmbxEvtParty_memberJoin,'cmbxEvtParty_memberLeft':cmbxEvtParty_memberLeft,'cmbxEvtParty_memberLvlUp':cmbxEvtParty_memberLvlUp,'cmbxEvtGuild_noticechanged':cmbxEvtGuild_noticechanged,'cmbxEvtGuild_memberLogin':cmbxEvtGuild_memberLogin,'cmbxEvtGuild_memberLogout':cmbxEvtGuild_memberLogout,'cmbxEvtPick_item':cmbxEvtPick_item,'cmbxEvtPick_rare':cmbxEvtPick_rare,'cmbxEvtPick_equip':cmbxEvtPick_equip}
+
 
 # ______________________________ Methods ______________________________ #
 
@@ -591,7 +595,10 @@ def _Notify(channel_id,message,info,colour):
 				if msg == 'true' or msg == 'success':
 					log("Plugin: notify sent to Discord!")
 				else:
-					log("Plugin: notify failed ["+msg+"]")
+					if msg == 'true' or msg == 'success' or '"status":"success"' in msg:
+						log("NsyL Discord Notification Successfully.")
+					else:
+						log("Plugin: notify failed ["+msg+"]")
 			except Exception as ex2:
 				log("Plugin: Error reading response from server ["+str(ex2)+"]")
 	except Exception as ex:
@@ -930,9 +937,11 @@ def handle_event(t, data):
 	elif t == 0:
 		Notify(QtBind.text(gui,cmbxEvtNear_unique),"|`"+character_data['name']+"`| - **"+data+"** unique is near to you!",CreateInfo("position",get_position()),colour=0xFF5722)
 	elif t == 1:
-		Notify(QtBind.text(gui,cmbxEvtNear_hunter),"|`"+character_data['name']+"`| - **Hunter/Trader** `"+data+"` is near to you",CreateInfo("position",get_position()),colour=0xFF5722)
+		# Job notification suppressed (Hunter/Trader near)
+		pass
 	elif t == 2:
-		Notify(QtBind.text(gui,cmbxEvtNear_thief),"|`"+character_data['name']+"`| - **Thief** `"+data+"` is near to you!",CreateInfo("position",get_position()),colour=0xFF5722)
+		# Job notification suppressed (Thief near)
+		pass
 	elif t == 4:
 		Notify(QtBind.text(gui,cmbxEvtChar_attacked),"|`"+character_data['name']+"`| - `"+data+"` is attacking you!",colour=0xFF5722)
 	elif t == 7:
@@ -1007,21 +1016,27 @@ def handle_joymax(opcode, data):
 				if channel_id:
 					progressType = data[3]
 					if progressType == 0:
-						Notify(channel_id,"[**Consignment**] Hunter trade will start at 10 minutes",colour=0x0000FF)
+						# Job notification suppressed (Consignment)
+						pass
 					elif progressType == 1:
-						Notify(channel_id,"[**Consignment**] Hunter trade started ("+getConsignmentTownText(data[4])+")",colour=0x0000FF)
+						# Job notification suppressed (Consignment)
+						pass
 					elif progressType == 2:
-						Notify(channel_id,"[**Consignment**] Hunter trade has ended",colour=0x0000FF)
+						# Job notification suppressed (Consignment)
+						pass
 			elif jobType == 2:
 				channel_id = QtBind.text(gui,cmbxEvtMessage_consignmentthief)
 				if channel_id:
 					progressType = data[3]
 					if progressType == 0:
-						Notify(channel_id,"[**Consignment**] Thief trade will start at 10 minutes",colour=0xFF5722)
+						# Job notification suppressed (Consignment)
+						pass
 					elif progressType == 1:
-						Notify(channel_id,"[**Consignment**] Thief trade started ("+getConsignmentTownText(data[4])+")",colour=0xFF5722)
+						# Job notification suppressed (Consignment)
+						pass
 					elif progressType == 2:
-						Notify(channel_id,"[**Consignment**] Thief trade has ended",colour=0xFF5722)
+						# Job notification suppressed (Consignment)
+						pass
 	# SERVER_BA_NOTICE
 	elif opcode == 0x34D2:
 		channel_id = QtBind.text(gui,cmbxEvtMessage_battlearena)
